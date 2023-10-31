@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Task4Test {
     @Test
     public void testCallingInfoMethodName() {
-        assertEquals("callingInfoTestMethodName", Calling.callingInfo().methodName());
+        assertEquals("testCallingInfoMethodName", Calling.callingInfo().methodName());
     }
 
     @Test
