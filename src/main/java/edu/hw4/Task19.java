@@ -1,21 +1,20 @@
 package edu.hw4;
 
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Task19 {
     private Task19() {
 
     }
 
-    public static Map<String, Set<ValidationError>> findAnimalsWithErrors(List<Animal> animals) {
-        Map<String, Set<ValidationError>> animalsWithErrors = new HashMap<>();
+    public static Map<String, LinkedHashSet<ValidationError>> findAnimalsWithErrors(List<Animal> animals) {
+        Map<String, LinkedHashSet<ValidationError>> animalsWithErrors = new HashMap<>();
 
         for (Animal animal : animals) {
-            Set<ValidationError> errors = new HashSet<>();
+            LinkedHashSet<ValidationError> errors = new LinkedHashSet<>();
 
             performValidations(animal, errors);
 
@@ -27,7 +26,7 @@ public class Task19 {
         return animalsWithErrors;
     }
 
-    private static void performValidations(Animal animal, Set<ValidationError> errors) {
+    private static void performValidations(Animal animal, LinkedHashSet<ValidationError> errors) {
         if (validateAnimalName(animal)) {
             errors.add(new ValidationError("Name is missing!", ErrorFields.NAME));
         }

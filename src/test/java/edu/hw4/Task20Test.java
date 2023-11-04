@@ -22,8 +22,9 @@ public class Task20Test {
         Map<String, String> expected = new HashMap<>();
         expected.put(
             "",
-            new ValidationError("Incorrect weight!", ErrorFields.WEIGHT).getFullError() +
-                new ValidationError("Name is missing!", ErrorFields.NAME).getFullError()
+            new ValidationError("Name is missing!", ErrorFields.NAME).getFullError() +
+            new ValidationError("Incorrect weight!", ErrorFields.WEIGHT).getFullError()
+
         );
         expected.put(
             "CAT",

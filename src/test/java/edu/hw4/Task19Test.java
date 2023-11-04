@@ -16,7 +16,7 @@ public class Task19Test {
             new Animal("BIRD", Animal.Type.BIRD, Animal.Sex.F, 2, 5, -40, false)
         });
 
-        Map<String, Set<ValidationError>> actual = findAnimalsWithErrors(animals);
+        Map<String, LinkedHashSet <ValidationError>> actual = findAnimalsWithErrors(animals);
 
         Map<String, Set<ValidationError>> expected = new HashMap<>();
         expected.put("", new HashSet<>(List.of(new ValidationError("Name is missing!", ErrorFields.NAME))));

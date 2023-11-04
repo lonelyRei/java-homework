@@ -1,9 +1,9 @@
 package edu.hw4;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import static edu.hw4.Task19.findAnimalsWithErrors;
 
 public class Task20 {
@@ -12,7 +12,7 @@ public class Task20 {
     }
 
     public static Map<String, String> findAnimalsWithStringErrors(List<Animal> animals) {
-        Map<String, Set<ValidationError>> animalsWithErrors = findAnimalsWithErrors(animals);
+        Map<String, LinkedHashSet<ValidationError>> animalsWithErrors = findAnimalsWithErrors(animals);
 
         Map<String, String> result = new HashMap<>();
 
