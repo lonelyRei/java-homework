@@ -10,17 +10,22 @@ public class Solver {
     }
 
     public void solve(boolean draw) {
+        // слева сверху - вправо вниз
+        this.solve(0, 0, maze.getDimensionY() - 1, maze.getDimensionY() - 1, draw);
+    }
+
+    public boolean solve(int startX, int startY, int endX, int endY, boolean draw) {
         prepareCells();
 
         ArrayList<Cell> openCells = new ArrayList<>();
 
-        Cell endCell = maze.getCell(maze.getDimensionX() - 1, maze.getDimensionY() - 1);
+        Cell endCell = maze.getCell(endX, endY);
 
-        removeStart(endCell, openCells);
+        removeStart(startX, startY, endCell, openCells);
 
         while (true) {
             if (openCells.isEmpty()) {
-                return;
+                return false;
             }
             openCells.sort(this::compareCells);
             Cell current = openCells.remove(0);
@@ -41,14 +46,15 @@ public class Solver {
         if (draw) {
             maze.draw();
         }
+        return true;
     }
 
     public String getSolutionString() {
         return maze.getMazeOutput();
     }
 
-    private void removeStart(Cell endCell, ArrayList<Cell> openCells) {
-        Cell start = maze.getCell(0, 0);
+    private void removeStart(int startX, int startY, Cell endCell, ArrayList<Cell> openCells) {
+        Cell start = maze.getCell(startX, startY);
         if (start == null) {
             return;
         }

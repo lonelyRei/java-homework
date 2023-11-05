@@ -1,9 +1,9 @@
 package edu.project2;
 
-import java.util.ArrayList;
-import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Maze {
     private final static Logger LOGGER = LogManager.getLogger("Maze");
@@ -12,45 +12,51 @@ public class Maze {
     private final char emptyChar = ' ';
     private final char wallChar = 'X';
     private final char cellChar = ' ';
-
-    // Размерность по x
-    private final int dimensionX;
-
-    // размерность по y
-    private final int dimensionY;
-
-    // размерность итогового грида по x (для рисования)
-    private final int gridDimensionX;
-
-    // размерность итогового грида по y (для рисования)
-    private final int gridDimensionY;
-
-    // сетка лабиринта (для рисования)
-    private final char[][] grid;
-
     // рандомный генератор, чтобы не создавать каждый раз новый
     private final Random random = new Random();
-
+    // Размерность по x
+    private int dimensionX;
+    // размерность по y
+    private int dimensionY;
+    // размерность итогового грида по x (для рисования)
+    private int gridDimensionX;
+    // размерность итогового грида по y (для рисования)
+    private int gridDimensionY;
+    // сетка лабиринта (для рисования)
+    private char[][] grid;
     // ячейки грида
     private Cell[][] cells;
 
     @SuppressWarnings("MagicNumber")
     public Maze(int xDimension, int yDimension) throws IllegalArgumentException {
-        if (!validateArguments(xDimension, yDimension)) {
-            throw new IllegalArgumentException("Wrong arguments");
-        }
+        validateArguments(xDimension, yDimension);
 
+        initializeStartData(xDimension, yDimension);
+        init();
+        generateMaze(getCell(0, 0));
+    }
+
+    public Maze(int xDimension, int yDimension, Cell[][] cells) throws IllegalArgumentException {
+        validateArguments(xDimension, yDimension);
+
+        initializeStartData(xDimension, yDimension);
+        this.cells = cells;
+        generateMaze(getCell(0, 0));
+    }
+
+    @SuppressWarnings("MagicNumber")
+    private void initializeStartData(int xDimension, int yDimension) {
         dimensionX = xDimension;
         dimensionY = yDimension;
         gridDimensionX = xDimension * 4 + 1;
         gridDimensionY = yDimension * 2 + 1;
         grid = new char[gridDimensionX][gridDimensionY];
-        init();
-        generateMaze(getCell(0, 0));
     }
 
-    private boolean validateArguments(int xDimension, int yDimension) {
-        return xDimension > 0 && yDimension > 0;
+    private void validateArguments(int xDimension, int yDimension) {
+        if (xDimension < 1 || yDimension < 1) {
+            throw new IllegalArgumentException("Wrong arguments");
+        }
     }
 
     public Cell[][] getCells() {
