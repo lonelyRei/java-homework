@@ -1,9 +1,9 @@
 package edu.project2;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Random;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Maze {
     private final static Logger LOGGER = LogManager.getLogger("Maze");
@@ -27,8 +27,7 @@ public class Maze {
     // ячейки грида
     private Cell[][] cells;
 
-    @SuppressWarnings("MagicNumber")
-    public Maze(int xDimension, int yDimension) throws IllegalArgumentException {
+    @SuppressWarnings("MagicNumber") public Maze(int xDimension, int yDimension) throws IllegalArgumentException {
         validateArguments(xDimension, yDimension);
 
         initializeStartData(xDimension, yDimension);
@@ -44,8 +43,7 @@ public class Maze {
         generateMaze(getCell(0, 0));
     }
 
-    @SuppressWarnings("MagicNumber")
-    private void initializeStartData(int xDimension, int yDimension) {
+    @SuppressWarnings("MagicNumber") private void initializeStartData(int xDimension, int yDimension) {
         dimensionX = xDimension;
         dimensionY = yDimension;
         gridDimensionX = xDimension * 4 + 1;
@@ -81,8 +79,7 @@ public class Maze {
         }
     }
 
-    @SuppressWarnings("MagicNumber")
-    private void generateMaze(Cell startAt) {
+    @SuppressWarnings("MagicNumber") private void generateMaze(Cell startAt) {
         // текущую ячейку больше нельзя использовать при генерации
         startAt.setOpen(false);
 
@@ -147,12 +144,8 @@ public class Maze {
 
     // возвращает потенциальных соседей ячейки
     private Cell[] getPotentialNeighbours(Cell cell) {
-        return new Cell[] {
-            getCell(cell.getX() + 1, cell.getY()),
-            getCell(cell.getX(), cell.getY() + 1),
-            getCell(cell.getX() - 1, cell.getY()),
-            getCell(cell.getX(), cell.getY() - 1)
-        };
+        return new Cell[] {getCell(cell.getX() + 1, cell.getY()), getCell(cell.getX(), cell.getY() + 1),
+            getCell(cell.getX() - 1, cell.getY()), getCell(cell.getX(), cell.getY() - 1)};
     }
 
     // возвращает текущую ячейку
@@ -166,8 +159,7 @@ public class Maze {
     }
 
     // обновление grid сетки, добавление символов для рисования
-    @SuppressWarnings("MagicNumber")
-    public void updateGrid() {
+    @SuppressWarnings("MagicNumber") public void updateGrid() {
         // заполняем все клетки пустотой
         for (int x = 0; x < gridDimensionX; x++) {
             for (int y = 0; y < gridDimensionY; y++) {
@@ -201,8 +193,13 @@ public class Maze {
     }
 
     // обновляет клетки на пути
-    @SuppressWarnings("MagicNumber")
-    private void updateCurrentCellInPath(Cell current, int gridX, int gridY, int x, int y) {
+    @SuppressWarnings("MagicNumber") private void updateCurrentCellInPath(
+        Cell current,
+        int gridX,
+        int gridY,
+        int x,
+        int y
+    ) {
         grid[gridX][gridY] = pathChar;
         if (current.isCellBelowNeighbor()) {
             if (getCell(x, y + 1).isInPath()) {
@@ -227,8 +224,7 @@ public class Maze {
     }
 
     // Обновляет клетки не на пути
-    @SuppressWarnings("MagicNumber")
-    private void updateCurrentCellNotInPath(Cell current, int gridX, int gridY) {
+    @SuppressWarnings("MagicNumber") private void updateCurrentCellNotInPath(Cell current, int gridX, int gridY) {
         grid[gridX][gridY] = cellChar;
         if (current.isCellBelowNeighbor()) {
             grid[gridX][gridY + 1] = cellChar;
