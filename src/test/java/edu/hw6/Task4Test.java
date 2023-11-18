@@ -1,14 +1,12 @@
 package edu.hw6;
 
-import org.junit.Test;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-
+import org.junit.jupiter.api.Test;
 import static edu.hw6.Task4.writeTextToFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
