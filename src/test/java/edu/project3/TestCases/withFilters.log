@@ -1,0 +1,8 @@
+217.168.17.5 - - [17/May/2015:08:05:34 +0000] "GET /downloads/product_1 HTTP/1.1" 200 0 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [17/May/2015:08:05:09 +0000] "GET /downloads/product_2 HTTP/1.1" 300 490 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [17/May/2015:08:05:34 +0000] "GET /downloads/product_3 HTTP/1.1" 400 590 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [17/May/2015:08:05:09 +0000] "GET /downloads/product_4 HTTP/1.1" 500 0 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [11/May/2015:08:05:34 +0000] "GET /downloads/product_1 HTTP/1.1" 200 0 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [12/May/2015:08:05:09 +0000] "GET /downloads/product_2 HTTP/1.1" 300 490 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [22/May/2015:08:05:34 +0000] "GET /downloads/product_1 HTTP/1.1" 400 590 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"
+217.168.17.5 - - [20/May/2015:08:05:09 +0000] "GET /downloads/product_2 HTTP/1.1" 500 0 "-" "Debian APT-HTTP/1.3 (0.8.10.3)"

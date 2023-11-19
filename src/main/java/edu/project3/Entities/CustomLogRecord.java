@@ -1,9 +1,9 @@
-package edu.project3;
+package edu.project3.Entities;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import static edu.project3.utils.DateFormatters.parseDate;
 
 public class CustomLogRecord {
     private String ipAddress;
@@ -33,6 +33,7 @@ public class CustomLogRecord {
         return parseValues(matcher);
     }
 
+    @SuppressWarnings("MagicNumber")
     private static CustomLogRecord parseValues(Matcher matcher) {
         if (matcher.matches()) {
             String ipAddress = matcher.group(1);
@@ -41,7 +42,7 @@ public class CustomLogRecord {
             String responseCode = matcher.group(4);
             String responseSize = matcher.group(5);
 
-            LocalDate parsedTimestamp = LocalDate.parse(timestamp, DateTimeFormatter.ISO_DATE);
+            LocalDate parsedTimestamp = parseDate(timestamp);
             Request parsedRequest = parseRequest(request);
             int parsedResponseCode = parseInteger(responseCode);
             int parsedResponseSize = parseInteger(responseSize);
@@ -58,6 +59,7 @@ public class CustomLogRecord {
         }
     }
 
+    @SuppressWarnings("MagicNumber")
     private static Request parseRequest(String requestToParse) {
         String regex = "^(\\w+)\\s+(\\S+)\\s+(\\S+)$";
         Pattern pattern = Pattern.compile(regex);

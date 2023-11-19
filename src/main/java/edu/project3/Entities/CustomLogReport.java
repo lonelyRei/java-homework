@@ -1,4 +1,4 @@
-package edu.project3;
+package edu.project3.Entities;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class CustomLogReport {
     private Map<String, Integer> requestedResources;
     private Map<Integer, Integer> responseCodes;
 
-    CustomLogReport(
+    public CustomLogReport(
         LocalDate fromDate,
         LocalDate toDate,
         long totalRequests,
