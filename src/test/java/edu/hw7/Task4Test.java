@@ -1,6 +1,6 @@
 package edu.hw7;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import java.util.concurrent.ExecutionException;
 import static edu.hw7.Task4.calculatePiMultiThreaded;
 import static edu.hw7.Task4SingleThread.calculatePiSingleThreaded;

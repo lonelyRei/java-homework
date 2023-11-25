@@ -1,6 +1,6 @@
 package edu.hw7;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import static edu.hw7.Task2.calculateFactorial;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
